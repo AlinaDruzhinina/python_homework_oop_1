@@ -112,6 +112,30 @@ some_rewiewer.courses_attached += ['GIT']
 some_rewiewer.rate_hw(some_student, 'Python', 10)
 some_rewiewer.rate_hw(some_student, 'GIT', 9.8)
 some_rewiewer.rate_hw(some_student_2, 'GIT', 10)
+
+def calc_aver_grade (students, course):
+    grades = []
+    for student in students:
+        if isinstance(student, Student) and course in student.courses_in_progress:
+            if course in student.grades:
+                grades += student.grades[course]
+    aver_grade = sum(grades) / len(grades)
+    return aver_grade
+print(calc_aver_grade ([some_student, some_student_2], "Python"))
+
+def calc_aver_grade_2 (lectors, course):
+    grades_2 = []
+    for lector in lectors:
+        if isinstance(lector, Lecturer):
+            if course in lector.grades:
+                grades_2 += lector.grades[course]
+    aver_grade = sum(grades_2) / len(grades_2)
+    return aver_grade
+
+print(calc_aver_grade_2 ([some_lecturer, some_lecturer_2], "Python"))
+
+
+
 # print(some_lecturer.courses_attached)
 # print(some_lecturer.grades)
 # print(some_lecturer_2.grades)
